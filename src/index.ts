@@ -1,6 +1,6 @@
 import { Game, Scale, Types, WEBGL } from 'phaser'
 
-import { LoadingScene } from './scenes'
+import { LoadingScene, Level1 } from './scenes'
 
 const sizeChanged = () => {
   if (game.isBooted) {
@@ -51,7 +51,7 @@ const gameConfig: Types.Core.GameConfig = {
   audio: {
     disableWebAudio: false
   },
-  scene: [LoadingScene]
+  scene: [LoadingScene, Level1]
 }
 
 const game = new Game(gameConfig)
