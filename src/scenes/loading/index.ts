@@ -20,9 +20,15 @@ export class LoadingScene extends Scene {
     this.load.image('king', 'sprites/king.png')
     // Our king atlas
     this.load.atlas('a-king', 'spritesheets/a-king.png', 'spritesheets/a-king_atlas.json')
+
+    this.load.spritesheet('tiles_spr', 'tilemaps/tiles/dungeon-16-16.png', {
+      frameWidth: 16,
+      frameHeight: 16
+    })
   }
 
   create (): void {
     this.scene.start('level-1-scene')
+    this.scene.start('ui-scene')
   }
 }
