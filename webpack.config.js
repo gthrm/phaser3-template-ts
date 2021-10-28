@@ -25,10 +25,13 @@ const config = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: isProd ? '[name].[contenthash].js' : 'bundle.js',
     publicPath: '/phaser3-template-ts/'
   },
-
+  performance: {
+    maxEntrypointSize: 900000,
+    maxAssetSize: 900000
+  },
   module: {
     rules: [
       {
