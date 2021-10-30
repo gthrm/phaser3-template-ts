@@ -3,7 +3,8 @@ import { GameObjects, Scene } from 'phaser'
 export class Text extends GameObjects.Text {
   constructor (scene: Scene, x: number, y: number, text: string) {
     super(scene, x, y, text, {
-      fontSize: 'calc(100vw / 25)',
+      fontFamily: 'KongText',
+      fontSize: 'calc(100vw / 40)',
       color: '#fff',
       stroke: '#000',
       strokeThickness: 4
