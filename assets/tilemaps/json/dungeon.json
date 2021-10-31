@@ -63,8 +63,8 @@
                  "type":"chest",
                  "visible":true,
                  "width":0,
-                 "x":433.699467783943,
-                 "y":420.110972709772
+                 "x":433.699,
+                 "y":420.111
                 }, 
                 {
                  "height":0,
@@ -75,8 +75,8 @@
                  "type":"chest",
                  "visible":true,
                  "width":0,
-                 "x":823.236326576832,
-                 "y":251.387158872155
+                 "x":823.236,
+                 "y":251.387
                 }, 
                 {
                  "height":0,
@@ -87,8 +87,8 @@
                  "type":"chest",
                  "visible":true,
                  "width":0,
-                 "x":806.250707734118,
-                 "y":588.83478654739
+                 "x":806.251,
+                 "y":588.835
                 }, 
                 {
                  "height":0,
@@ -99,8 +99,8 @@
                  "type":"chest",
                  "visible":true,
                  "width":0,
-                 "x":978.371645340279,
-                 "y":893.443551126713
+                 "x":978.372,
+                 "y":893.444
                 }, 
                 {
                  "height":0,
@@ -111,8 +111,8 @@
                  "type":"chest",
                  "visible":true,
                  "width":0,
-                 "x":1232.02355339146,
-                 "y":295.549767863209
+                 "x":1232.02,
+                 "y":295.55
                 }, 
                 {
                  "height":0,
@@ -123,8 +123,115 @@
                  "type":"chest",
                  "visible":true,
                  "width":0,
-                 "x":1173.14007473672,
-                 "y":611.482278337674
+                 "x":1173.14,
+                 "y":611.482
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":5,
+         "name":"Enemies",
+         "objects":[
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"EnemyPoint",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Enemies",
+                 "visible":true,
+                 "width":0,
+                 "x":767.749971690635,
+                 "y":308.005888347865
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"EnemyPoint",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Enemies",
+                 "visible":true,
+                 "width":0,
+                 "x":491.450571849168,
+                 "y":442.758464500057
+                }, 
+                {
+                 "height":0,
+                 "id":11,
+                 "name":"EnemyPoint",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Enemies",
+                 "visible":true,
+                 "width":0,
+                 "x":600.158532442532,
+                 "y":640.924017665043
+                }, 
+                {
+                 "height":0,
+                 "id":12,
+                 "name":"EnemyPoint",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Enemies",
+                 "visible":true,
+                 "width":0,
+                 "x":1227.4940550334,
+                 "y":952.327029781452
+                }, 
+                {
+                 "height":0,
+                 "id":13,
+                 "name":"EnemyPoint",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Enemies",
+                 "visible":true,
+                 "width":0,
+                 "x":1029.32850186842,
+                 "y":644.321141433586
+                }, 
+                {
+                 "height":0,
+                 "id":14,
+                 "name":"EnemyPoint",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Enemies",
+                 "visible":true,
+                 "width":0,
+                 "x":1303.36315253086,
+                 "y":420.110972709772
+                }, 
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"EnemyPoint",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Enemies",
+                 "visible":true,
+                 "width":0,
+                 "x":1177.66957309478,
+                 "y":385.007360434832
+                }, 
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"EnemyPoint",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Enemies",
+                 "visible":true,
+                 "width":0,
+                 "x":1090.47672970219,
+                 "y":278.564149020496
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -132,8 +239,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":5,
- "nextobjectid":9,
+ "nextlayerid":6,
+ "nextobjectid":17,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
