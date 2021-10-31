@@ -6,7 +6,7 @@ import { Player } from './player'
 
 export class Enemy extends Actor {
   private target: Player;
-  private AGRESSOR_RADIUS = 100;
+  private AGRESSOR_RADIUS = 200;
   private attackHandler: () => void;
 
   constructor (
@@ -37,7 +37,7 @@ export class Enemy extends Actor {
       ) {
         this.getDamage()
         this.disableBody(true, false)
-
+        this.setActive(false)
         this.scene.time.delayedCall(300, () => {
           this.destroy()
         })
@@ -47,20 +47,29 @@ export class Enemy extends Actor {
     // EVENTS
     this.scene.game.events.on(EVENTS_NAME.attack, this.attackHandler, this)
     this.on('destroy', () => {
-      this.scene.game.events.removeListener(EVENTS_NAME.attack, this.attackHandler)
+      this.scene.game.events.removeListener(
+        EVENTS_NAME.attack,
+        this.attackHandler
+      )
     })
+
+    this.light.intensity = 0
+    this.light.color.set(3, 123, 254)
   }
 
   preUpdate (): void {
+    this.handleLight()
     if (
       Math.Distance.BetweenPoints(
         { x: this.x, y: this.y },
         { x: this.target.x, y: this.target.y }
       ) < this.AGRESSOR_RADIUS
     ) {
+      this.light.intensity = 0.01
       this.getBody().setVelocityX(this.target.x - this.x)
       this.getBody().setVelocityY(this.target.y - this.y)
     } else {
+      this.light.intensity = 0
       this.getBody().setVelocity(0)
     }
   }

@@ -68,11 +68,11 @@ export class Player extends Actor {
     }
   }
 
-  run () {
+  run (): void {
     !this.anims.isPlaying && this.anims.play('run', true)
   }
 
-  update (): void {
+  move (): void {
     this.getBody().setVelocity(0)
     this.run()
     if (this.keyW?.isDown) {
@@ -94,7 +94,11 @@ export class Player extends Actor {
       this.checkFlip()
       this.getBody().setOffset(15, 15)
     }
+  }
 
+  update (): void {
+    super.update()
+    this.move()
     this.hpValue.setPosition(this.x, this.y - this.height * 0.4)
     this.hpValue.setOrigin(0.8, 0.5)
   }

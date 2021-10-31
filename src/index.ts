@@ -25,11 +25,12 @@ const gameConfig: Types.Core.GameConfig = {
   title: 'Phaser game tutorial',
   type: WEBGL,
   parent: 'game',
-  backgroundColor: '#351f1b',
+  backgroundColor: '#000',
   scale: {
-    mode: Scale.ScaleModes.NONE,
+    mode: Scale.ScaleModes.FIT,
     width: window.innerWidth,
-    height: window.innerHeight
+    height: window.innerHeight,
+    autoCenter: Scale.CENTER_BOTH
   },
   physics: {
     default: 'arcade',
@@ -46,7 +47,7 @@ const gameConfig: Types.Core.GameConfig = {
       sizeChanged()
     }
   },
-  canvasStyle: 'display: block; width: 100%; height: 100%;',
+  // canvasStyle: 'display: block; width: 100%; height: 100%;',
   autoFocus: true,
   audio: {
     disableWebAudio: false

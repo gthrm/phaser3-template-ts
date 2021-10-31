@@ -1,15 +1,18 @@
-import { Physics, Scene } from 'phaser'
+import { GameObjects, Physics, Scene } from 'phaser'
 
 export class Actor extends Physics.Arcade.Sprite {
     protected hp = 100;
+    public light!: GameObjects.Light
 
     constructor (scene: Scene, x: number, y: number, texture: string, frame?: string | number) {
       super(scene, x, y, texture, frame)
 
       scene.add.existing(this)
       scene.physics.add.existing(this)
-
       this.getBody().setCollideWorldBounds(true)
+      this.light = scene.lights.addLight(this.x, this.y)
+      this.light.color.set(241, 80, 69)
+      this.light.intensity = 0.01
     }
 
     public getDamage (value?: number): void {
@@ -44,5 +47,20 @@ export class Actor extends Physics.Arcade.Sprite {
 
     protected getBody (): Physics.Arcade.Body {
       return this.body as Physics.Arcade.Body
+    }
+
+    public destroy () {
+      super.destroy()
+      this.light.intensity = 0
+    }
+
+    public handleLight ():void {
+      this.light.x = this.x
+      this.light.y = this.y
+    }
+
+    public update () {
+      super.update()
+      this.handleLight()
     }
 }

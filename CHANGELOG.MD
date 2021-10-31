@@ -8,3 +8,8 @@
 ## [30.10.2021] 1.0.1
 
 - Added Part 8: Bots, game end screen
+
+
+## [30.10.2021] 1.0.2
+
+- Added light
