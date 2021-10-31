@@ -99,7 +99,11 @@ const config = {
         }
       ]
     })
-  ]
+  ],
+  devServer: {
+    open: true,
+    port: 8080
+  }
 }
 
 module.exports = config

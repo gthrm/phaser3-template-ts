@@ -2,15 +2,16 @@ import { Display, GameObjects, Scene, Tilemaps } from 'phaser'
 import { gameObjectsToObjectPoints } from '../../helpers/gameobject-to-object-point'
 import { Player } from '../../classes/player'
 import { EVENTS_NAME } from 'src/consts'
+import { Enemy } from '../../classes/enemy'
 
 export class Level1 extends Scene {
-  private player!: GameObjects.Sprite;
+  private player!: Player;
   private map!: Tilemaps.Tilemap;
   private tileset!: Tilemaps.Tileset;
   private wallsLayer!: Tilemaps.TilemapLayer;
   private groundLayer!: Tilemaps.TilemapLayer;
   private chests!: GameObjects.Sprite[];
-
+  private enemies!: GameObjects.Sprite[];
   constructor () {
     super('level-1-scene')
   }
@@ -66,12 +67,31 @@ export class Level1 extends Scene {
     this.cameras.main.setZoom(3)
   }
 
+  private initEnemies (): void {
+    const enemiesPoints = gameObjectsToObjectPoints(
+      this.map.filterObjects('Enemies', (obj) => obj.name === 'EnemyPoint')
+    )
+
+    this.enemies = enemiesPoints.map((enemyPoint) =>
+      new Enemy(this, enemyPoint.x, enemyPoint.y, 'tiles_spr', this.player, 503)
+        .setName(enemyPoint.id.toString())
+        .setScale(1.5)
+    )
+
+    this.physics.add.collider(this.enemies, this.wallsLayer)
+    this.physics.add.collider(this.enemies, this.enemies)
+    this.physics.add.collider(this.player, this.enemies, (obj1, obj2) => {
+      (obj1 as Player).getDamage(1)
+    })
+  }
+
   create (): void {
     this.initMap()
 
     this.map.findObject('player', (playerObj: any) => {
-      this.player = new Player(this, playerObj.x, playerObj.y)
+      this.player = new Player(this, playerObj.x, playerObj.y - playerObj.height * 0.4)
     })
+    this.initEnemies()
     this.initCamera()
     this.initChests()
     this.physics.add.collider(this.player, this.wallsLayer)

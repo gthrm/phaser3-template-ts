@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="9">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="17">
  <editorsettings>
   <export target="../json/dungeon.json" format="json"/>
  </editorsettings>
@@ -391,6 +391,32 @@
    <point/>
   </object>
   <object id="8" name="ChestPoint" type="chest" x="1173.14" y="611.482">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="Enemies">
+  <object id="9" name="EnemyPoint" type="Enemies" x="767.75" y="308.006">
+   <point/>
+  </object>
+  <object id="10" name="EnemyPoint" type="Enemies" x="491.451" y="442.758">
+   <point/>
+  </object>
+  <object id="11" name="EnemyPoint" type="Enemies" x="600.159" y="640.924">
+   <point/>
+  </object>
+  <object id="12" name="EnemyPoint" type="Enemies" x="1227.49" y="952.327">
+   <point/>
+  </object>
+  <object id="13" name="EnemyPoint" type="Enemies" x="1029.33" y="644.321">
+   <point/>
+  </object>
+  <object id="14" name="EnemyPoint" type="Enemies" x="1303.36" y="420.111">
+   <point/>
+  </object>
+  <object id="15" name="EnemyPoint" type="Enemies" x="1177.67" y="385.007">
+   <point/>
+  </object>
+  <object id="16" name="EnemyPoint" type="Enemies" x="1090.48" y="278.564">
    <point/>
   </object>
  </objectgroup>
