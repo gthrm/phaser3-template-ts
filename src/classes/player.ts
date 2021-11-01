@@ -32,7 +32,7 @@ export class Player extends Actor {
     )
       .setFontSize(12)
       .setOrigin(0.8, 0.5)
-
+      .setDepth(1)
     // PHYSICS
     this.getBody().setSize(30, 30)
     this.getBody().setOffset(8, 0)
@@ -66,6 +66,11 @@ export class Player extends Actor {
     if (this.hp <= 0) {
       this.scene.game.events.emit(EVENTS_NAME.gameEnd, GAME_STATUS.LOSE)
     }
+  }
+
+  public getHealth (value?: number): void {
+    super.getHealth(value)
+    this.hpValue.setText(this.hp.toString())
   }
 
   run (): void {

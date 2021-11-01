@@ -1,7 +1,7 @@
 import { Display, GameObjects, Scene, Tilemaps } from 'phaser'
 import { gameObjectsToObjectPoints } from '../../helpers/gameobject-to-object-point'
 import { Player } from '../../classes/player'
-import { EVENTS_NAME } from '../../consts'
+import { EVENTS_NAME, GAME_STATUS } from '../../consts'
 import { Enemy } from '../../classes/enemy'
 
 export class Level1 extends Scene {
@@ -10,7 +10,9 @@ export class Level1 extends Scene {
   private tileset!: Tilemaps.Tileset;
   private wallsLayer!: Tilemaps.TilemapLayer;
   private groundLayer!: Tilemaps.TilemapLayer;
+  private topsLayer!: Tilemaps.TilemapLayer;
   private chests!: GameObjects.Sprite[];
+  private health!: GameObjects.Sprite[];
   private enemies!: GameObjects.Sprite[];
   constructor () {
     super('level-1-scene')
@@ -24,6 +26,7 @@ export class Level1 extends Scene {
     })
     this.tileset = this.map.addTilesetImage('dungeon', 'tiles')
     this.groundLayer = this.map.createLayer('Ground', this.tileset, 0, 0).setPipeline('Light2D')
+    this.topsLayer = this.map.createLayer('Tops', this.tileset, 0, 0).setPipeline('Light2D')
     this.wallsLayer = this.map.createLayer('Walls', this.tileset, 0, 0).setPipeline('Light2D')
     this.physics.world.setBounds(
       0,
@@ -64,6 +67,26 @@ export class Level1 extends Scene {
     })
   }
 
+  private initHealth (): void {
+    const healthPoints = gameObjectsToObjectPoints(
+      this.map.filterObjects('Health', (obj) => obj.name === 'HealthPoint')
+    )
+
+    this.health = healthPoints.map((healthPoint) =>
+      this.physics.add
+        .sprite(healthPoint.x, healthPoint.y, 'tiles_spr', 530)
+        .setScale(1.5)
+    )
+
+    this.health.forEach((health) => {
+      this.physics.add.overlap(this.player, health, (obj1, obj2) => {
+        this.player.getHealth(20)
+        obj2.destroy()
+        this.cameras.main.flash(250, 0, 185, 86)
+      })
+    })
+  }
+
   private initCamera (): void {
     this.cameras.main.setSize(
       this.game.scale.width,
@@ -92,9 +115,13 @@ export class Level1 extends Scene {
     })
   }
 
-  create (): void {
-    this.initMap()
+  private handleChest () {
+    if (!this.chests.filter(({ active }) => active).length) {
+      this.game.events.emit(EVENTS_NAME.gameEnd, GAME_STATUS.WIN)
+    }
+  }
 
+  private initPlayer () {
     this.map.findObject('player', (playerObj: any) => {
       this.player = new Player(
         this,
@@ -102,13 +129,20 @@ export class Level1 extends Scene {
         playerObj.y - playerObj.height * 0.4
       )
     })
+  }
+
+  create (): void {
+    this.initMap()
+    this.initPlayer()
     this.initEnemies()
     this.initCamera()
     this.initChests()
+    this.initHealth()
     this.physics.add.collider(this.player, this.wallsLayer)
   }
 
   update (): void {
     this.player.update()
+    this.handleChest()
   }
 }

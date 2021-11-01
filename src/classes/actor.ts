@@ -1,7 +1,7 @@
 import { GameObjects, Physics, Scene } from 'phaser'
-
+const INITIAL_HP = 100
 export class Actor extends Physics.Arcade.Sprite {
-    protected hp = 100;
+    protected hp = INITIAL_HP;
     public light!: GameObjects.Light
 
     constructor (scene: Scene, x: number, y: number, texture: string, frame?: string | number) {
@@ -31,6 +31,12 @@ export class Actor extends Physics.Arcade.Sprite {
           this.setAlpha(1)
         }
       })
+    }
+
+    public getHealth (value?: number): void {
+      if (value && this.hp < INITIAL_HP) {
+        this.hp = this.hp + value
+      }
     }
 
     public getHPValue (): number {

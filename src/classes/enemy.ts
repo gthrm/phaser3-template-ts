@@ -6,7 +6,7 @@ import { Player } from './player'
 
 export class Enemy extends Actor {
   private target: Player;
-  private AGRESSOR_RADIUS = 200;
+  private AGRESSOR_RADIUS = 100;
   private attackHandler: () => void;
 
   constructor (
@@ -33,7 +33,7 @@ export class Enemy extends Actor {
         Math.Distance.BetweenPoints(
           { x: this.x, y: this.y },
           { x: this.target.x, y: this.target.y }
-        ) < this.target.width
+        ) < this.target.width / 2
       ) {
         this.getDamage()
         this.disableBody(true, false)

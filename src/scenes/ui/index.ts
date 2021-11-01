@@ -1,6 +1,6 @@
 import { Input, Scene } from 'phaser'
 import { Text } from '../../classes/text'
-import { EVENTS_NAME, GAME_STATUS, WIN_SCORE } from '../../consts'
+import { EVENTS_NAME, GAME_STATUS } from '../../consts'
 
 import { Score, ScoreOperations } from '../../classes/score'
 
@@ -16,9 +16,6 @@ export class UIScene extends Scene {
 
   private chestLootHandler (): void {
     this.score.changeValue(ScoreOperations.INCREASE, 10)
-    if (this.score.getValue() === WIN_SCORE) {
-      this.game.events.emit(EVENTS_NAME.gameEnd, 'win')
-    }
   }
 
   private initListeners (): void {

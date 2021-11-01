@@ -9,8 +9,6 @@ export const enum GAME_STATUS {
   'LOSE',
 }
 
-export const WIN_SCORE = 60
-
 
 export const MAX_CAMERA_SIZE = {
   width: 800,
